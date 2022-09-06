@@ -2,11 +2,6 @@ package utils;
 
 import java.util.Iterator;
 
-/*
-Realizuokite visus interfeiso metodus susietojo sarašo pagrindu.
-Nesinaudokite java klase LinkedList<E>, visa logika meginkite parasyti patys.
-Jeigu reikia, galima kurti papildomus metodus ir kintamuosius.
-*/
 public class LinkedList<T> implements List<T> {
 
     class Node<T> {
@@ -20,7 +15,6 @@ public class LinkedList<T> implements List<T> {
     }
 
     private Node<T> begin;
-    private Node<T> end;
     private Node<T> current;
 
 
@@ -31,14 +25,24 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        if (index == 0 && this.begin != null) return null;
-
+        if (index == 0 && this.begin != null) return this.begin.Data;
+        this.current = this.begin;
+        try {
+            for (int i = 0; i < index; i++) {
+                if (iterator().hasNext()) {
+                    iterator().next();
+                }
+            }
+            return current.Data;
+        } catch (NullPointerException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public boolean remove(T item) {
-        if (begin == null)
-            return false;
+        if (begin == null) return false;
         Node previousNode = null;
         for (Node i = begin; i != null; i = i.Next) {
             if (i.Data.equals(item)) {
@@ -52,15 +56,16 @@ public class LinkedList<T> implements List<T> {
                     previousNode.Next = i.Next;
                     return true;
                 }
-            } else
-                previousNode = i;
+            } else previousNode = i;
         }
         return false;
     }
 
     @Override
     public Iterator<T> iterator() {
+        current = begin;
         return new Iterator<>() {
+
 
             @Override
             public boolean hasNext() {
@@ -69,7 +74,7 @@ public class LinkedList<T> implements List<T> {
 
             @Override
             public T next() {
-                if (hasNext()){
+                if (hasNext()) {
                     T data = current.Data;
                     current = current.Next;
                     return data;
