@@ -31,7 +31,8 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return current.Data;
+        if (index == 0 && this.begin != null) return null;
+
     }
 
     @Override
@@ -63,12 +64,17 @@ public class LinkedList<T> implements List<T> {
 
             @Override
             public boolean hasNext() {
-                throw new UnsupportedOperationException("Metoda reikia realiztuoti");
+                return current != null;
             }
 
             @Override
             public T next() {
-                throw new UnsupportedOperationException("Metoda reikia realiztuoti");
+                if (hasNext()){
+                    T data = current.Data;
+                    current = current.Next;
+                    return data;
+                }
+                return null;
             }
         };
     }
