@@ -1,4 +1,5 @@
 package com.company;
+
 import models.Student;
 import utils.*;
 
@@ -27,7 +28,7 @@ public class Main {
     private static void performTests(List<Student> students) {
         System.out.println("Initial students list:");
 
-        for(Student student : students){
+        for (Student student : students) {
             System.out.println(student);
         }
 
@@ -37,21 +38,21 @@ public class Main {
 
         System.out.println("\nAfter removal:");
 
-        for(Student student : students){
+        for (Student student : students) {
             System.out.println(student);
         }
 
-        students.add(new Student("Ona", "Onaite", 20,"IFF-8/1"));
+        students.add(new Student("Ona", "Onaite", 20, "IFF-8/1"));
 
         System.out.println("\nAfter addition at the end and insertion at the start:");
 
-        for(Student student : students){
+        for (Student student : students) {
             System.out.println(student);
         }
 
         System.out.println("\nTesting get() method:");
 
-        for(int i = 0; i < 2; i++){
+        for (int i = 0; i < 2; i++) {
             System.out.println(students.get(i));
         }
 
