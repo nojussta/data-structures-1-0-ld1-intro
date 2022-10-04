@@ -22,14 +22,6 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void add(T item) {
         begin = new Node<>(item, begin);
-//        Node<T> temp = new Node(item, null);
-//        if (begin == null)
-//        begin = end = temp;
-//            else
-//        {
-//            end.Next = temp;
-//            end = temp;
-//        }
     }
 
     @Override
